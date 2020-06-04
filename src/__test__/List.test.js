@@ -1,6 +1,7 @@
 import React from "react";
 import List from "./../components/List";
-import { configure, shallow, mount, render } from "enzyme";
+import { configure, shallow /* mount, render*/ } from "enzyme";
+import toJson from "enzyme-to-json"; // Dar otro formato al snapshot
 import Adapter from "enzyme-adapter-react-16";
 configure({ adapter: new Adapter() });
 
@@ -45,5 +46,16 @@ describe("Pruebas a componente <List />", () => {
     expect(wrapper.find("li").length).toBe(1);
     wrapper.setProps({ title: "Super frutas" });
     expect(wrapper.find(".big").text()).toBe("Super frutas");
+  });
+
+  test("Validar que coincida con snapshot", () => {
+    const fruits = [
+      { name: "Fresa", id: 1 },
+      { name: "Uva", id: 2 },
+      { name: "Mango", id: 3 },
+      { name: "Naranja", id: 4 },
+    ];
+    const wrapper = shallow(<List title="frutas" list={fruits} />);
+    expect(toJson(wrapper)).toMatchSnapshot();
   });
 });

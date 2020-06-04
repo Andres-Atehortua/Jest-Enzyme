@@ -2,7 +2,7 @@ import React from "react";
 import App, { Title } from "./../App";
 // Configuración de enzyme en cada test de componentes
 
-import { configure, shallow, mount, render } from "enzyme";
+import { configure, shallow /*mount, render*/ } from "enzyme";
 // shallow hace un renderizado superficial dentro de la memoria y cada montado es independiente. Ideal para
 // componentes como una única unidad
 // mount es útil para interactuar con apis del dom o probar componente envuento en otro componente HOC
