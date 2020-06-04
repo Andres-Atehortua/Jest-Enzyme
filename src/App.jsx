@@ -1,5 +1,6 @@
 import React from "react";
-import List from "./components/List";
+// import List from "./components/List";
+import Counter from "./components/Counter";
 
 export const Title = () => <h1>Testing con JEST y ENZYME</h1>;
 
@@ -22,6 +23,9 @@ function App() {
         {/* <p>Dentro2</p> */}
       </div>
       <p>Hermano</p>
+      <div>
+        <Counter />
+      </div>
     </section>
   );
 }

@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pruebas para componente <Counter /> Comprobar que coincida con el snapshot 1`] = `
+<div>
+  <h2>
+    0
+  </h2>
+  <button
+    onClick={[Function]}
+  >
+    Increment
+  </button>
+  <button
+    onClick={[Function]}
+  >
+    Decrement
+  </button>
+</div>
+`;

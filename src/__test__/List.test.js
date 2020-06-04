@@ -6,14 +6,19 @@ import Adapter from "enzyme-adapter-react-16";
 configure({ adapter: new Adapter() });
 
 describe("Pruebas a componente <List />", () => {
+  const fruits = [
+    { name: "Fresa", id: 1 },
+    { name: "Uva", id: 2 },
+    { name: "Mango", id: 3 },
+    { name: "Naranja", id: 4 },
+  ];
+  let wrapper;
+  // Antes de cada test se reasigna un nuevo wrapper.
+  beforeEach(() => {
+    wrapper = shallow(<List title="frutas" list={fruits} />);
+  });
+
   test("Validar nodos", () => {
-    const fruits = [
-      { name: "Fresa", id: 1 },
-      { name: "Uva", id: 2 },
-      { name: "Mango", id: 3 },
-      { name: "Naranja", id: 4 },
-    ];
-    const wrapper = shallow(<List title="frutas" list={fruits} />);
     // Validar si existe nodo
     expect(wrapper.find("h2").exists()).toBe(true);
     //Validar si tiene clase css
@@ -33,13 +38,6 @@ describe("Pruebas a componente <List />", () => {
   });
 
   test("Actualizar valizaciones en props", () => {
-    const fruits = [
-      { name: "Fresa", id: 1 },
-      { name: "Uva", id: 2 },
-      { name: "Mango", id: 3 },
-      { name: "Naranja", id: 4 },
-    ];
-    const wrapper = shallow(<List title="frutas" list={fruits} />);
     // Validar cantidad de elementos li
     expect(wrapper.find("li").length).toBe(4);
     wrapper.setProps({ list: [{ name: "kiwi", id: 5 }] });
@@ -49,13 +47,6 @@ describe("Pruebas a componente <List />", () => {
   });
 
   test("Validar que coincida con snapshot", () => {
-    const fruits = [
-      { name: "Fresa", id: 1 },
-      { name: "Uva", id: 2 },
-      { name: "Mango", id: 3 },
-      { name: "Naranja", id: 4 },
-    ];
-    const wrapper = shallow(<List title="frutas" list={fruits} />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 });
